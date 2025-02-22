@@ -1,38 +1,48 @@
 import styled from "styled-components";
 import {Artwork} from "../interfaces/Artworks.ts";
 
-const AllCharsDiv=styled.div`
+const AllArtsDiv=styled.div`
     display: flex;
     flex-flow: row wrap;    
     justify-content: space-evenly;
-    background-color: lightblue;
-    border: 5px solid black;
+    background-color: #FFBE71FF;
 `;
 
-const SingleCharDiv=styled.div`
+const SingleArtDiv=styled.div`
     display: flex;
     flex-direction: column;   
     justify-content: center;
     max-width: 30%;
-    padding: 2%;
+    padding: 0.5% 1%;
     margin: 1%;
-    border: 3px darkred solid;
-    border-radius: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
     font: italic small-caps bold calc(2px + 1vw) Papyrus, fantasy;
     text-align: center;
+    box-shadow: 2px 2px 8px black;
+    background-color: #67A8E1FF;
+    
 `;
+
+const StyledImg=styled.img`
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 15px;
+`;
+
 
 export default function MuseumArtwork(props : { data:Artwork[] } ){
     return (
-        <AllCharsDiv >
-            {
+        <AllArtsDiv >
+            {   
                 props.data.map((char: Artwork) =>
-                    <SingleCharDiv key={char.id}>
-                        <h1>{char.title}</h1>
-                        <img src={char.primaryImage} alt={`image of ${char.title}`} />
-                    </SingleCharDiv>
+                    <SingleArtDiv key={char.id}>
+                        <h2>{char.title}</h2>
+                        <StyledImg src={char.primaryImage} alt={`image of ${char.title}`} /> 
+                        <p>Year: {char.accessionYear}</p>
+                    </SingleArtDiv>
                 )
             }
-        </AllCharsDiv>
+        </AllArtsDiv>
     );
 }
