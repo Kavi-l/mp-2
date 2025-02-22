@@ -25,11 +25,17 @@ const SingleArtDiv=styled.div`
 `;
 
 const StyledImg=styled.img`
-    max-width: 400px;
-    max-height: 400px;
-    border-radius: 15px;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+`;
+
+const ImgDiv=styled.div`
+    width: 75%;
+    height: 75%;
     margin: auto;
 `;
+
 
 
 export default function MuseumArtwork(props : { data:Artwork[] } ){
@@ -39,7 +45,7 @@ export default function MuseumArtwork(props : { data:Artwork[] } ){
                 props.data.map((char: Artwork) =>
                     <SingleArtDiv key={char.id}>
                         <h2>{char.title}</h2>
-                        <StyledImg src={char.primaryImage} alt={`image of ${char.title}`} /> 
+                        <ImgDiv><StyledImg src={char.primaryImage} alt={`image of ${char.title}`} /> </ImgDiv>
                         <p>Year: {char.accessionYear}</p>
                     </SingleArtDiv>
                 )
